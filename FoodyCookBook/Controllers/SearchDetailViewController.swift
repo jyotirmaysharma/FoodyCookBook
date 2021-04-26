@@ -102,6 +102,11 @@ class SearchDetailViewController: UIViewController {
          
          UserDefaults.standard.synchronize()
     }
+    @IBAction func watchYoutubePressed(_ sender: Any) {
+        if let youtubeURL = URL(string: "youtube://\(searchData[0].meals[0].strYoutube!)"), UIApplication.shared.canOpenURL(youtubeURL) {
+            UIApplication.shared.canOpenURL(youtubeURL)
+        }
+    }
 }
 
 //MARK: API Calls

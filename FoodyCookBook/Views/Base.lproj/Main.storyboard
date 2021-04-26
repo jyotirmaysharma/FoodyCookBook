@@ -310,6 +310,9 @@
                                                 <state key="normal" title="Watch Video">
                                                     <color key="titleColor" systemColor="systemBackgroundColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="watchYoutubePressed:" destination="gI1-as-BBO" eventType="touchUpInside" id="yY0-1f-xR7"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSE-us-Th3">
                                                 <rect key="frame" x="12" y="1146" width="390" height="42"/>

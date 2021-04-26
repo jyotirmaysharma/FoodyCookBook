@@ -129,6 +129,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func watchVideoPressed(_ sender: UIButton) {
+        if let youtubeURL = URL(string: "youtube://\(randomRecipeData[0].meals[0].strYoutube!)"), UIApplication.shared.canOpenURL(youtubeURL) {
+            UIApplication.shared.canOpenURL(youtubeURL)
+        }
     }
 }
 
