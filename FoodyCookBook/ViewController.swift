@@ -6,14 +6,117 @@
 //
 
 import UIKit
+import Alamofire
+import Kingfisher
 
 class ViewController: UIViewController {
+    
+    var randomRecipeData = [RandomRecipeModel]()
+    var ingString: String = ""
 
+    @IBOutlet var recipeImage: UIImageView!
+    @IBOutlet var recipeName: UILabel!
+    @IBOutlet var recipeIngridients: UITextView!
+    @IBOutlet var watchButton: UIButton!
+    @IBOutlet var recipeInstructions: UITextView!
+    @IBOutlet var recipeTags: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        randomCall()
     }
 
+    func setData() {
+        self.watchButton.layer.cornerRadius = self.watchButton.layer.frame.height/2
+        self.recipeIngridients.layer.cornerRadius = 8
+        self.recipeInstructions.layer.cornerRadius = 8
+        
+        let imgUrl = URL(string: randomRecipeData[0].meals[0].strMealThumb!)
+        self.recipeImage.kf.setImage(with: imgUrl)
+        
+        self.recipeName.text = randomRecipeData[0].meals[0].strMeal!
+        self.recipeInstructions.text = randomRecipeData[0].meals[0].strInstructions!
+        setIngridients()
+        setTags()
+    }
 
+    func setIngridients() {
+        checkIng()
+        print(ingString)
+        self.recipeIngridients.text = self.ingString
+    }
+    
+    func setTags() {
+        var tagStr = "Categories: "
+        
+        if randomRecipeData[0].meals[0].strCategory != nil {
+            tagStr = tagStr + " " + randomRecipeData[0].meals[0].strCategory!
+        }
+        if randomRecipeData[0].meals[0].strArea != nil {
+            tagStr = tagStr + ", " + randomRecipeData[0].meals[0].strArea!
+        }
+        if randomRecipeData[0].meals[0].strTags != nil {
+            tagStr = tagStr + ", " + randomRecipeData[0].meals[0].strTags!
+        }
+        
+        self.recipeTags.text = tagStr
+    }
+    
+    func checkIng() {
+        nullAdder(randomRecipeData[0].meals[0].strIngredient1 ?? "", randomRecipeData[0].meals[0].strMeasure1!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient2 ?? "", randomRecipeData[0].meals[0].strMeasure2!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient3 ?? "", randomRecipeData[0].meals[0].strMeasure3!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient4 ?? "", randomRecipeData[0].meals[0].strMeasure4!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient5 ?? "", randomRecipeData[0].meals[0].strMeasure5!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient6 ?? "", randomRecipeData[0].meals[0].strMeasure6!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient7 ?? "", randomRecipeData[0].meals[0].strMeasure7!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient8 ?? "", randomRecipeData[0].meals[0].strMeasure8!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient9 ?? "", randomRecipeData[0].meals[0].strMeasure9!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient10 ?? "", randomRecipeData[0].meals[0].strMeasure10!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient11 ?? "", randomRecipeData[0].meals[0].strMeasure11!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient12 ?? "", randomRecipeData[0].meals[0].strMeasure12!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient13 ?? "", randomRecipeData[0].meals[0].strMeasure13!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient14 ?? "", randomRecipeData[0].meals[0].strMeasure14!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient15 ?? "", randomRecipeData[0].meals[0].strMeasure15!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient16 ?? "", randomRecipeData[0].meals[0].strMeasure16!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient17 ?? "", randomRecipeData[0].meals[0].strMeasure17!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient18 ?? "", randomRecipeData[0].meals[0].strMeasure18!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient19 ?? "", randomRecipeData[0].meals[0].strMeasure19!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient20 ?? "", randomRecipeData[0].meals[0].strMeasure20!)
+    }
+    
+    func nullAdder(_ str: String, _ amt: String) {
+        if str != nil && str != "" {
+            ingString = ingString + "\(str): \(amt)\n"
+        }
+    }
 }
 
+//MARK: API Calls
+extension ViewController {
+    func randomCall() {
+        AF.request(Constants.RANDOMAPI as URLConvertible).responseJSON { response in
+            print(response.data ?? "data nil")
+            self.parseRandomJSON(response.data!)
+        }
+    }
+    
+    func parseRandomJSON(_ data: Data) {
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode(RandomRecipeModel.self, from: data)
+            
+            self.randomRecipeData.append(decodedData)
+            
+            print(randomRecipeData[0].meals[0].idMeal!)
+            print(randomRecipeData[0].meals[0].strMealThumb!)
+            print(randomRecipeData[0].meals[0].strMeal!)
+            print(randomRecipeData[0].meals[0].strInstructions!)
+            
+            self.setData()
+        } catch {
+            print("Parse error: \(error)")
+        }
+    }
+}
