@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     var randomRecipeData = [RandomRecipeModel]()
     var ingString: String = ""
+    var id: String = ""
 
     @IBOutlet var recipeImage: UIImageView!
     @IBOutlet var recipeName: UILabel!
@@ -25,12 +26,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         randomCall()
-    }
-
-    func setData() {
         self.watchButton.layer.cornerRadius = self.watchButton.layer.frame.height/2
         self.recipeIngridients.layer.cornerRadius = 8
         self.recipeInstructions.layer.cornerRadius = 8
+    }
+
+    func setData() {
         
         let imgUrl = URL(string: randomRecipeData[0].meals[0].strMealThumb!)
         self.recipeImage.kf.setImage(with: imgUrl)
@@ -39,6 +40,16 @@ class ViewController: UIViewController {
         self.recipeInstructions.text = randomRecipeData[0].meals[0].strInstructions!
         setIngridients()
         setTags()
+        
+//        self.recipeIngridients.translatesAutoresizingMaskIntoConstraints = true
+//        self.recipeIngridients.sizeToFit()
+//        self.recipeIngridients.isScrollEnabled = false
+//        
+//        self.recipeInstructions.translatesAutoresizingMaskIntoConstraints = true
+//        self.recipeInstructions.sizeToFit()
+//        self.recipeInstructions.isScrollEnabled = false
+//        
+//        self.watchButton.translatesAutoresizingMaskIntoConstraints = false
     }
 
     func setIngridients() {
@@ -64,26 +75,26 @@ class ViewController: UIViewController {
     }
     
     func checkIng() {
-        nullAdder(randomRecipeData[0].meals[0].strIngredient1 ?? "", randomRecipeData[0].meals[0].strMeasure1!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient2 ?? "", randomRecipeData[0].meals[0].strMeasure2!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient3 ?? "", randomRecipeData[0].meals[0].strMeasure3!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient4 ?? "", randomRecipeData[0].meals[0].strMeasure4!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient5 ?? "", randomRecipeData[0].meals[0].strMeasure5!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient6 ?? "", randomRecipeData[0].meals[0].strMeasure6!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient7 ?? "", randomRecipeData[0].meals[0].strMeasure7!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient8 ?? "", randomRecipeData[0].meals[0].strMeasure8!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient9 ?? "", randomRecipeData[0].meals[0].strMeasure9!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient10 ?? "", randomRecipeData[0].meals[0].strMeasure10!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient11 ?? "", randomRecipeData[0].meals[0].strMeasure11!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient12 ?? "", randomRecipeData[0].meals[0].strMeasure12!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient13 ?? "", randomRecipeData[0].meals[0].strMeasure13!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient14 ?? "", randomRecipeData[0].meals[0].strMeasure14!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient15 ?? "", randomRecipeData[0].meals[0].strMeasure15!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient16 ?? "", randomRecipeData[0].meals[0].strMeasure16!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient17 ?? "", randomRecipeData[0].meals[0].strMeasure17!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient18 ?? "", randomRecipeData[0].meals[0].strMeasure18!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient19 ?? "", randomRecipeData[0].meals[0].strMeasure19!)
-        nullAdder(randomRecipeData[0].meals[0].strIngredient20 ?? "", randomRecipeData[0].meals[0].strMeasure20!)
+        nullAdder(randomRecipeData[0].meals[0].strIngredient1 ?? "", randomRecipeData[0].meals[0].strMeasure1 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient2 ?? "", randomRecipeData[0].meals[0].strMeasure2 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient3 ?? "", randomRecipeData[0].meals[0].strMeasure3 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient4 ?? "", randomRecipeData[0].meals[0].strMeasure4 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient5 ?? "", randomRecipeData[0].meals[0].strMeasure5 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient6 ?? "", randomRecipeData[0].meals[0].strMeasure6 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient7 ?? "", randomRecipeData[0].meals[0].strMeasure7 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient8 ?? "", randomRecipeData[0].meals[0].strMeasure8 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient9 ?? "", randomRecipeData[0].meals[0].strMeasure9 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient10 ?? "", randomRecipeData[0].meals[0].strMeasure10 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient11 ?? "", randomRecipeData[0].meals[0].strMeasure11 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient12 ?? "", randomRecipeData[0].meals[0].strMeasure12 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient13 ?? "", randomRecipeData[0].meals[0].strMeasure13 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient14 ?? "", randomRecipeData[0].meals[0].strMeasure14 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient15 ?? "", randomRecipeData[0].meals[0].strMeasure15 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient16 ?? "", randomRecipeData[0].meals[0].strMeasure16 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient17 ?? "", randomRecipeData[0].meals[0].strMeasure17 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient18 ?? "", randomRecipeData[0].meals[0].strMeasure18 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient19 ?? "", randomRecipeData[0].meals[0].strMeasure19 ?? "")
+        nullAdder(randomRecipeData[0].meals[0].strIngredient20 ?? "", randomRecipeData[0].meals[0].strMeasure20 ?? "")
     }
     
     func nullAdder(_ str: String, _ amt: String) {
