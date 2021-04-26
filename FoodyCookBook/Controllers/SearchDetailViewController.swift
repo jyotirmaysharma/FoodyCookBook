@@ -101,6 +101,8 @@ class SearchDetailViewController: UIViewController {
          UserDefaults.standard.set(savedArrayName, forKey: "SavedNames")
          
          UserDefaults.standard.synchronize()
+        
+        self.saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
     }
     @IBAction func watchYoutubePressed(_ sender: Any) {
         if let youtubeURL = URL(string: "youtube://\(searchData[0].meals[0].strYoutube!)"), UIApplication.shared.canOpenURL(youtubeURL) {

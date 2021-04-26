@@ -125,6 +125,8 @@ class ViewController: UIViewController {
         
         UserDefaults.standard.synchronize()
         
+        self.saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        
         print("Save pressed")
     }
     
