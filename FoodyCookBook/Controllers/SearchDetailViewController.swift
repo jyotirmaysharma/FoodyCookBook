@@ -21,6 +21,7 @@ class SearchDetailViewController: UIViewController {
     @IBOutlet var wathcvideo: UIButton!
     @IBOutlet var instructions: UITextView!
     @IBOutlet var tags: UILabel!
+    @IBOutlet var saveButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +90,17 @@ class SearchDetailViewController: UIViewController {
         if str != nil && str != "" {
             ingStr = ingStr + "\(str): \(amt)\n"
         }
+    }
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        var savedArrayID = UserDefaults.standard.stringArray(forKey: "SavedIds")
+         savedArrayID?.append(searchData[0].meals[0].idMeal!)
+         UserDefaults.standard.set(savedArrayID, forKey: "SavedIds")
+         
+         var savedArrayName = UserDefaults.standard.stringArray(forKey: "SavedNames")
+         savedArrayName?.append(searchData[0].meals[0].strMeal!)
+         UserDefaults.standard.set(savedArrayName, forKey: "SavedNames")
+         
+         UserDefaults.standard.synchronize()
     }
 }
 

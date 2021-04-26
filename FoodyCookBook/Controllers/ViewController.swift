@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     var randomRecipeData = [RandomRecipeModel]()
     var ingString: String = ""
     var id: String = ""
+    
+    let arrayID = ["52914"]
+    let arrayName = ["Boulangère Potatoes"]
 
     @IBOutlet var recipeImage: UIImageView!
     @IBOutlet var recipeName: UILabel!
@@ -21,14 +24,21 @@ class ViewController: UIViewController {
     @IBOutlet var watchButton: UIButton!
     @IBOutlet var recipeInstructions: UITextView!
     @IBOutlet var recipeTags: UILabel!
+    @IBOutlet var saveButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        instantiateArray()
         randomCall()
         self.watchButton.layer.cornerRadius = self.watchButton.layer.frame.height/2
         self.recipeIngridients.layer.cornerRadius = 8
         self.recipeInstructions.layer.cornerRadius = 8
+        saveButton.isUserInteractionEnabled = true
+    }
+    
+    func instantiateArray() {
+        UserDefaults.standard.set(arrayID, forKey: "SavedIds")
+        UserDefaults.standard.set(arrayName, forKey: "SavedNames")
     }
 
     func setData() {
@@ -101,6 +111,24 @@ class ViewController: UIViewController {
         if str != nil && str != "" {
             ingString = ingString + "\(str): \(amt)\n"
         }
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        
+        var savedArrayID = UserDefaults.standard.stringArray(forKey: "SavedIds")
+        savedArrayID?.append(randomRecipeData[0].meals[0].idMeal!)
+        UserDefaults.standard.set(savedArrayID, forKey: "SavedIds")
+        
+        var savedArrayName = UserDefaults.standard.stringArray(forKey: "SavedNames")
+        savedArrayName?.append(randomRecipeData[0].meals[0].strMeal!)
+        UserDefaults.standard.set(savedArrayName, forKey: "SavedNames")
+        
+        UserDefaults.standard.synchronize()
+        
+        print("Save pressed")
+    }
+    
+    @IBAction func watchVideoPressed(_ sender: UIButton) {
     }
 }
 

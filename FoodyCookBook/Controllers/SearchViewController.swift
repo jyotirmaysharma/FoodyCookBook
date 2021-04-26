@@ -39,6 +39,9 @@ extension SearchViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.searchText = textField.text!
         print(self.searchText)
+        if !self.searchData.isEmpty {
+            self.searchData.remove(at: 0)
+        }
         searchCall(searchText)
     }
 }
@@ -50,7 +53,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SearchCell
-        
         cell.searchResultName.text = self.searchData[0].meals[indexPath.row].strMeal!
         
         return cell
@@ -82,9 +84,7 @@ extension SearchViewController {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(RandomRecipeModel.self, from: data)
-            self.searchData.append(decodedData)
-            
-            print(searchData[0].meals[1].strMeal)
+                self.searchData.append(decodedData)
             
             self.tableCount = self.searchData[0].meals.count
             

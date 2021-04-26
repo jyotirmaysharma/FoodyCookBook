@@ -17,6 +17,7 @@
 		554FDD762636B02A002FDBCA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554FDD752636B02A002FDBCA /* Constants.swift */; };
 		55978D112636DDA800ACB0AB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55978D102636DDA800ACB0AB /* SearchViewController.swift */; };
 		55978D142636F07B00ACB0AB /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55978D132636F07B00ACB0AB /* SearchDetailViewController.swift */; };
+		55978D2126370C5900ACB0AB /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55978D2026370C5900ACB0AB /* SavedViewController.swift */; };
 		C48039F0078B7C9DFD444932 /* Pods_FoodyCookBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E562FCC8201C85A14CBC1267 /* Pods_FoodyCookBook.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		554FDD752636B02A002FDBCA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		55978D102636DDA800ACB0AB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		55978D132636F07B00ACB0AB /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
+		55978D2026370C5900ACB0AB /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		83661574EA23E597BBD4731B /* Pods-FoodyCookBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyCookBook.debug.xcconfig"; path = "Target Support Files/Pods-FoodyCookBook/Pods-FoodyCookBook.debug.xcconfig"; sourceTree = "<group>"; };
 		CEFF840B4593448DD2032381 /* Pods-FoodyCookBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyCookBook.release.xcconfig"; path = "Target Support Files/Pods-FoodyCookBook/Pods-FoodyCookBook.release.xcconfig"; sourceTree = "<group>"; };
 		E562FCC8201C85A14CBC1267 /* Pods_FoodyCookBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodyCookBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,19 +81,52 @@
 		554FDD512636A6D4002FDBCA /* FoodyCookBook */ = {
 			isa = PBXGroup;
 			children = (
-				554FDD522636A6D4002FDBCA /* AppDelegate.swift */,
-				554FDD542636A6D4002FDBCA /* SceneDelegate.swift */,
-				554FDD562636A6D4002FDBCA /* ViewController.swift */,
-				554FDD582636A6D4002FDBCA /* Main.storyboard */,
+				55978D1C263708D800ACB0AB /* Extras */,
+				55978D162637088200ACB0AB /* Controllers */,
+				55978D19263708B300ACB0AB /* Views */,
 				554FDD5B2636A6D5002FDBCA /* Assets.xcassets */,
-				554FDD5D2636A6D5002FDBCA /* LaunchScreen.storyboard */,
 				554FDD602636A6D5002FDBCA /* Info.plist */,
-				554FDD6E2636AF58002FDBCA /* RandomRecipeModel.swift */,
-				554FDD752636B02A002FDBCA /* Constants.swift */,
-				55978D102636DDA800ACB0AB /* SearchViewController.swift */,
-				55978D132636F07B00ACB0AB /* SearchDetailViewController.swift */,
+				55978D1A263708C300ACB0AB /* Models */,
 			);
 			path = FoodyCookBook;
+			sourceTree = "<group>";
+		};
+		55978D162637088200ACB0AB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				55978D132636F07B00ACB0AB /* SearchDetailViewController.swift */,
+				55978D102636DDA800ACB0AB /* SearchViewController.swift */,
+				554FDD562636A6D4002FDBCA /* ViewController.swift */,
+				55978D2026370C5900ACB0AB /* SavedViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		55978D19263708B300ACB0AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				554FDD5D2636A6D5002FDBCA /* LaunchScreen.storyboard */,
+				554FDD582636A6D4002FDBCA /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		55978D1A263708C300ACB0AB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				554FDD752636B02A002FDBCA /* Constants.swift */,
+				554FDD6E2636AF58002FDBCA /* RandomRecipeModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		55978D1C263708D800ACB0AB /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				554FDD542636A6D4002FDBCA /* SceneDelegate.swift */,
+				554FDD522636A6D4002FDBCA /* AppDelegate.swift */,
+			);
+			path = Extras;
 			sourceTree = "<group>";
 		};
 		D1CCC99EBD2786557F4FC554 /* Pods */ = {
@@ -223,6 +258,7 @@
 				554FDD6F2636AF58002FDBCA /* RandomRecipeModel.swift in Sources */,
 				554FDD572636A6D4002FDBCA /* ViewController.swift in Sources */,
 				554FDD532636A6D4002FDBCA /* AppDelegate.swift in Sources */,
+				55978D2126370C5900ACB0AB /* SavedViewController.swift in Sources */,
 				554FDD552636A6D4002FDBCA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

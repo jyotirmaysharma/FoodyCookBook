@@ -75,6 +75,9 @@
                                                 <state key="normal" title="Watch Video">
                                                     <color key="titleColor" systemColor="systemBackgroundColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="watchVideoPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vEf-KA-Agg"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0q5-KQ-B51">
                                                 <rect key="frame" x="12" y="1146" width="390" height="42"/>
@@ -92,6 +95,9 @@
                                                     <constraint firstAttribute="height" constant="32" id="nQH-9V-cgQ"/>
                                                 </constraints>
                                                 <state key="normal" image="bookmark" catalog="system"/>
+                                                <connections>
+                                                    <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mFJ-XF-EPT"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -154,6 +160,7 @@
                         <outlet property="recipeInstructions" destination="dSd-zO-mDu" id="nJe-Pq-Xdr"/>
                         <outlet property="recipeName" destination="QhK-HB-fUo" id="LPR-0C-P4b"/>
                         <outlet property="recipeTags" destination="0q5-KQ-B51" id="h8Z-ia-h9U"/>
+                        <outlet property="saveButton" destination="WfC-en-fkH" id="lbd-N7-NZk"/>
                         <outlet property="watchButton" destination="AXV-kh-PUQ" id="k6t-ka-qIP"/>
                     </connections>
                 </viewController>
@@ -270,6 +277,9 @@
                                                     <constraint firstAttribute="height" constant="32" id="uZv-Du-cwt"/>
                                                 </constraints>
                                                 <state key="normal" image="bookmark" catalog="system"/>
+                                                <connections>
+                                                    <action selector="saveButtonPressed:" destination="gI1-as-BBO" eventType="touchUpInside" id="fKs-tM-ZFR"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingridients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bc7-3h-mae">
                                                 <rect key="frame" x="12" y="274" width="390" height="25"/>
@@ -372,28 +382,71 @@
                         <outlet property="ingridients" destination="32l-LB-YVr" id="Ght-h2-XZE"/>
                         <outlet property="instructions" destination="n5o-oD-bYt" id="G6K-QU-Yvg"/>
                         <outlet property="name" destination="v3D-8C-rFJ" id="HzX-bx-YpZ"/>
+                        <outlet property="saveButton" destination="G1H-93-1cP" id="9B3-uk-2H9"/>
                         <outlet property="tags" destination="PSE-us-Th3" id="HIL-aL-T6h"/>
                         <outlet property="wathcvideo" destination="5xX-B8-kav" id="QSR-yI-uSj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0i-bN-GUs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1942.0289855072465" y="525.66964285714289"/>
+            <point key="canvasLocation" x="1951" y="216"/>
         </scene>
         <!--My Recipe-->
         <scene sceneID="rp1-xm-yXi">
             <objects>
-                <viewController id="KJM-MC-Gvl" sceneMemberID="viewController">
+                <viewController id="KJM-MC-Gvl" customClass="SavedViewController" customModule="FoodyCookBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZxU-YU-SGs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="65f-7I-YHF">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="savecell" rowHeight="54" id="td4-kS-S7W" customClass="SavedCell" customModule="FoodyCookBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="td4-kS-S7W" id="zwl-fH-qbX">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3h-xx-UdQ">
+                                                    <rect key="frame" x="4" y="2" width="406" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="f3h-xx-UdQ" firstAttribute="top" secondItem="zwl-fH-qbX" secondAttribute="top" constant="2" id="9ue-gj-0ZW"/>
+                                                <constraint firstItem="f3h-xx-UdQ" firstAttribute="leading" secondItem="zwl-fH-qbX" secondAttribute="leading" constant="4" id="T4o-r2-w6Y"/>
+                                                <constraint firstAttribute="bottom" secondItem="f3h-xx-UdQ" secondAttribute="bottom" constant="2" id="fuK-nf-eQw"/>
+                                                <constraint firstAttribute="trailing" secondItem="f3h-xx-UdQ" secondAttribute="trailing" constant="4" id="jO6-NP-kti"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="f3h-xx-UdQ" id="cP8-cx-ZQB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Gsx-HP-z8b"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Gsx-HP-z8b" firstAttribute="trailing" secondItem="65f-7I-YHF" secondAttribute="trailing" id="EaZ-Lw-q1N"/>
+                            <constraint firstItem="Gsx-HP-z8b" firstAttribute="bottom" secondItem="65f-7I-YHF" secondAttribute="bottom" id="GDH-jk-x5D"/>
+                            <constraint firstItem="65f-7I-YHF" firstAttribute="leading" secondItem="Gsx-HP-z8b" secondAttribute="leading" id="eNA-z6-rlN"/>
+                            <constraint firstItem="65f-7I-YHF" firstAttribute="top" secondItem="Gsx-HP-z8b" secondAttribute="top" id="jiY-N6-GGS"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Recipe" id="faM-mr-ACF">
                         <imageReference key="image" image="bookmark" catalog="system" symbolScale="large"/>
                         <imageReference key="selectedImage" image="bookmark.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="tableView" destination="65f-7I-YHF" id="Wy7-cN-9VK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sd0-yw-jAd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
