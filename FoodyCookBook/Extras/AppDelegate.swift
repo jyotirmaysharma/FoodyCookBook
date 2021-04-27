@@ -13,6 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let arrayID = [String]()
+        let arrayName = [String]()
+        UserDefaults.standard.set(arrayID, forKey: "SavedIds")
+        UserDefaults.standard.set(arrayName, forKey: "SavedNames")
         // Override point for customization after application launch.
         return true
     }

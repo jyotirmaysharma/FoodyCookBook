@@ -37,8 +37,8 @@ class ViewController: UIViewController {
     }
     
     func instantiateArray() {
-        UserDefaults.standard.set(arrayID, forKey: "SavedIds")
-        UserDefaults.standard.set(arrayName, forKey: "SavedNames")
+//        UserDefaults.standard.set(arrayID, forKey: "SavedIds")
+//        UserDefaults.standard.set(arrayName, forKey: "SavedNames")
     }
 
     func setData() {

@@ -107,6 +107,9 @@ class SearchDetailViewController: UIViewController {
     @IBAction func watchYoutubePressed(_ sender: Any) {
         if let youtubeURL = URL(string: "youtube://\(searchData[0].meals[0].strYoutube!)"), UIApplication.shared.canOpenURL(youtubeURL) {
             UIApplication.shared.canOpenURL(youtubeURL)
+        } else {
+            let url = URL(string: searchData[0].meals[0].strYoutube!)!
+            UIApplication.shared.open(url)
         }
     }
 }
